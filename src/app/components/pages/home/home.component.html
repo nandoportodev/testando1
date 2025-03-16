@@ -1,7 +1,17 @@
 <div class="home-container">
-    <h1>Veja o que esta rolando</h1>
-    <div *ngFor="let moment of moments">
-        <h2>{{moment.title}}</h2>
-
+  <h1>Veja o que esta rolando</h1>
+  <div *ngIf="moments.length > 0; else noMoments">
+    <div class="moments-container">
+      <div class="moment" *ngFor="let moment of moments">
+        <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+        <h2>{{ moment.title }}</h2>
+        <p class="date">Em: {{moment.created_at}}</p>
+        <p>Comentarios: {{moment.comments!.length}}</p>
+        <p><a routerLink="moments/{{moment.id}}"></a>Detalhes</p>
+      </div>
     </div>
+  </div>
+  <ng-template #noMoments>
+    <h1>Não Há momentos</h1>
+  </ng-template>
 </div>
