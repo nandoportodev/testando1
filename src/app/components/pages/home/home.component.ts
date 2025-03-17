@@ -9,29 +9,40 @@ import { Response } from '../../../Response';
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  allMoments: Moment[] = [];
+  moments: Moment[] = [];
+  baseApiUrl = environment.baseApiUrl;
 
-  allMoments: Moment[] = []
-  moments: Moment[] = []
-  baseApiUrl = environment.baseApiUrl
+  faSearch = faSearch;
+  searchTerms: string = '';
 
-  constructor(private momentService: MomentService) { }
+  constructor(private momentService: MomentService) {}
 
   ngOnInit(): void {
     this.momentService.getMoments().subscribe((items) => {
-     const data = items.data;
+      const data = items.data;
 
-     data.map((item) => {
-      item.created_at = new Date(item.created_at!).toLocaleDateString(
-        'pt-br'
-      );
-  });
+      data.map((item) => {
+        item.created_at = new Date(item.created_at!).toLocaleDateString(
+          'pt-br'
+        );
+      });
 
-this.allMoments = data
-this.moments = data
-
-});
+      this.allMoments = data;
+      this.moments = data;
+    });
   }
+    search(e: Event): void {
+
+      const target = e.target as HTMLInputElement
+      const value = target.value
+
+      this.moments  = this.allMoments.filter((moment) => {
+       return moment.title.toLowerCase().includes(value)
+    });
+
+    }
 }

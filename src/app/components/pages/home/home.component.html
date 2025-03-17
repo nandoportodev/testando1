@@ -1,13 +1,19 @@
 <div class="home-container">
   <h1>Veja o que esta rolando</h1>
+  <div class="search-container" >
+    <form>
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <input type="text" placeholder="Pesquisar" (input)="search($event)">
+    </form>
+  </div>
   <div *ngIf="moments.length > 0; else noMoments">
     <div class="moments-container">
       <div class="moment" *ngFor="let moment of moments">
-        <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}">
+        <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{moment.title}}"/>
         <h2>{{ moment.title }}</h2>
         <p class="date">Em: {{moment.created_at}}</p>
         <p>Comentarios: {{moment.comments!.length}}</p>
-        <p><a routerLink="moments/{{moment.id}}"></a>Detalhes</p>
+        <p><a routerLink="moments/{{moment.id}}">Detalhes</a></p>
       </div>
     </div>
   </div>
