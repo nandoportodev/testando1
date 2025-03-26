@@ -1,0 +1,20 @@
+<div class="jogo-container">
+    <h1>Jogo da Forca</h1>
+    <p></p>
+    <div class="input-container">
+    <input id="letra-input" #letraInput type="text" placeholder="Digite uma letra" maxlength="1">
+      <button id="tentar-button" (click)="verificarLetra(letraInput.value)">Tentar</button>
+    </div>
+    <p id="message">{{ message }}</p>
+    <p id="palavra-formada">{{ palavraFormada }}</p>
+    <p id="tentativas">Tentativas: {{ numeroTentativas }}</p>
+    <button id="mostrar-json" (click)="mostrarJson()">Mostrar Resultados</button>
+    <div id="modal" class="modal" (click)="fecharModalFora($event)">
+      <div class="modal-content">
+        <span id="close-modal" class="close-button" (click)="fecharModal()">&times;</span>
+        <div id="json-display">
+          <!-- Resultados serão exibidos aqui -->
+        </div>
+      </div>
+    </div>
+  </div>

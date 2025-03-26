@@ -15,6 +15,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MomentComponent } from './components/pages/moment/moment.component';
 import { EditMomentComponent } from './components/pages/edit-moment/edit-moment.component';
+import { JogoComponent } from './components/pages/jogo/jogo.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EditMomentComponent } from './components/pages/edit-moment/edit-moment.
     MessagesComponent,
     MomentComponent,
     EditMomentComponent,
+    
 
   ],
   imports: [
@@ -37,7 +39,8 @@ import { EditMomentComponent } from './components/pages/edit-moment/edit-moment.
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    JogoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
